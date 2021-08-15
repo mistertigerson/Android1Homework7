@@ -32,6 +32,7 @@
                 android:src="@drawable/image1"
                 />
             <TextView
+                android:id="@+id/text_thirth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
@@ -44,6 +45,7 @@
                 />
 
             <TextView
+                android:id="@+id/text2_thirth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rick Sanchez"

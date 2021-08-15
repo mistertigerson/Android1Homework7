@@ -5,5 +5,5 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 
 public interface OnViewClickListener {
-    void onClick();
+    void onClick(MainModel mainModel);
 }

@@ -57,9 +57,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView img, img1;
-        private TextView dead, name, dead1, name1;
-        private CardView cardView;
+        private ImageView img;
+        private TextView dead, name;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -70,7 +69,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.onClick();
+                    listener.onClick(list.get(getAdapterPosition()));
                 }
             });
 
@@ -80,8 +79,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             img.setImageResource(mainModel.getImg());
             dead.setText(mainModel.getDead());
             name.setText(mainModel.getName());
-
-
         }
 
 

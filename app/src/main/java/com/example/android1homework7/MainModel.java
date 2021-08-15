@@ -1,13 +1,15 @@
 package com.example.android1homework7;
 
-public class MainModel {
+import java.io.Serializable;
+
+public class MainModel implements Serializable {
 
     private int img;
     private String dead;
     private String name;
 
 
-    public MainModel(int img, String dead, String name, int img1, String dead1, String name1) {
+    public MainModel(int img, String dead, String name) {
         this.img = img;
         this.dead = dead;
         this.name = name;

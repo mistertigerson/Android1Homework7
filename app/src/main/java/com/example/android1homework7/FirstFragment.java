@@ -24,21 +24,25 @@ import java.util.ArrayList;
 
 public class FirstFragment extends Fragment {
 
-    private RecyclerView recyclerView;
     private MainAdapter adapter;
     private ArrayList<MainModel> list = new ArrayList<>();
     private FragmentFirstBinding binding;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        adapter = new MainAdapter();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        createList();
         binding = FragmentFirstBinding.inflate(inflater, container, false);
-        View view = binding.getRoot();
-        return view;
+        initList();
+        return binding.getRoot();
     }
-
 
     @Override
     public void onDestroyView() {
@@ -49,38 +53,37 @@ public class FirstFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        createList();
-        recyclerView = view.findViewById(R.id.main_recycler);
-        adapter = new MainAdapter();
-        recyclerView.setAdapter(adapter);
-        adapter.setList(list);
+
         adapter.setListener(new OnViewClickListener() {
             @Override
-            public void onClick() {
-                getParentFragmentManager().beginTransaction().replace(R.id.main_frame, new ThirthFragment()).commit();
+            public void onClick(MainModel mainModel) {
+                ThirthFragment thirthFragment = new ThirthFragment();
+                getParentFragmentManager().beginTransaction().replace(R.id.main_frame, thirthFragment).commit();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("MYKEY", mainModel);
+                thirthFragment.setArguments(bundle);
             }
         });
 
 
     }
 
-    private void createList() {
+    private void initList() {
+        adapter.setList(list);
+        binding.mainRecycler.setAdapter(adapter);
+    }
 
-        list.add(new MainModel(R.drawable._image_,"dead","Agency Dirrector", R.drawable._image_,
-                "alive", "Rick Sanchez"));
-        list.add(new MainModel(R.drawable._image_,"dead","Agency Dirrector", R.drawable._image_,
-                "alive", "Rick Sanchez"));
-        list.add(new MainModel(R.drawable._image_,"dead","Agency Dirrector", R.drawable._image_,
-                "alive", "Rick Sanchez"));
-        list.add(new MainModel(R.drawable._image_,"dead","Agency Dirrector", R.drawable._image_,
-                "alive", "Rick Sanchez"));list.add(new MainModel(R.drawable._image_,"dead","Agency Dirrector", R.drawable._image_,
-                "alive", "Rick Sanchez"));
-        list.add(new MainModel(R.drawable._image_,"dead","Agency Dirrector", R.drawable._image_,
-                "alive", "Rick Sanchez"));
-        list.add(new MainModel(R.drawable._image_,"dead","Agency Dirrector", R.drawable._image_,
-                "alive", "Rick Sanchez"));
-        list.add(new MainModel(R.drawable._image_,"dead","Agency Dirrector", R.drawable._image_,
-                "alive", "Rick Sanchez"));
+    private void createList() {
+        list.add(new MainModel(R.drawable._image_,"dead","Agency fdsaf"));
+        list.add(new MainModel(R.drawable._image_,"dead","Agency fdsafadsf"));
+        list.add(new MainModel(R.drawable._image_,"dead","Agency fsdafsd"));
+        list.add(new MainModel(R.drawable._image_,"dead","RICK SANCHEZ"));
+        list.add(new MainModel(R.drawable._image_,"dead","Agency Difsdafsadrrector"));
+        list.add(new MainModel(R.drawable._image_,"dead","Agency fdsafdsa"));
+        list.add(new MainModel(R.drawable._image_,"dead","Agency fsdafdsaf"));
+        list.add(new MainModel(R.drawable._image_,"dead","Agency sdafsd"));
+        list.add(new MainModel(R.drawable._image_,"dead","Agedsfncy ewqr"));
+        list.add(new MainModel(R.drawable._image_,"dead","Agency Dirrector"));
 
     }
 }
