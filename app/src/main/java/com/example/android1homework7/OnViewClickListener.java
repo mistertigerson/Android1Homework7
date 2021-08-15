@@ -6,4 +6,6 @@ import java.util.ArrayList;
 
 public interface OnViewClickListener {
     void onClick(MainModel mainModel);
+
+    void onClick(StringModel stringModel);
 }

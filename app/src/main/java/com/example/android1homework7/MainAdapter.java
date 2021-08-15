@@ -23,7 +23,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     private ArrayList<MainModel> list = new ArrayList<>();
 
-
     OnViewClickListener listener;
 
     void setListener(OnViewClickListener listener){
@@ -34,8 +33,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         this.list.addAll(list);
         notifyDataSetChanged();
     }
-
-
 
     @NonNull
     @Override
@@ -69,6 +66,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     listener.onClick(list.get(getAdapterPosition()));
                 }
             });

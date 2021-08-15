@@ -48,6 +48,22 @@ public class SecondFragment extends Fragment {
         createList();
         binding.secondRecycler.setAdapter(adapter);
         adapter.setList(list);
+
+        adapter.setListener(new OnViewClickListener() {
+            @Override
+            public void onClick(MainModel mainModel) {
+
+            }
+
+            @Override
+            public void onClick(StringModel stringModel) {
+                FourthFragment fragment = new FourthFragment();
+                getParentFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("secondKey", stringModel );
+                fragment.setArguments(bundle);
+            }
+        });
     }
 
     private void createList() {

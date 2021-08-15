@@ -63,6 +63,11 @@ public class FirstFragment extends Fragment {
                 bundle.putSerializable("MYKEY", mainModel);
                 thirthFragment.setArguments(bundle);
             }
+
+            @Override
+            public void onClick(StringModel stringModel) {
+
+            }
         });
 
 

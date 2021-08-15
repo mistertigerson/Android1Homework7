@@ -14,6 +14,13 @@ public class SecondAdapter extends RecyclerView.Adapter<SecondAdapter.ViewHolder
 
     private ArrayList<StringModel> list = new ArrayList<>();
 
+    OnViewClickListener listener;
+
+    public void setListener(OnViewClickListener listener){
+        this.listener = listener;
+
+    }
+
     public void setList(ArrayList<StringModel> list){
         this.list.addAll(list);
         notifyDataSetChanged();
@@ -46,6 +53,13 @@ public class SecondAdapter extends RecyclerView.Adapter<SecondAdapter.ViewHolder
             super(itemView);
             planetName = itemView.findViewById(R.id.planet);
             numberOfPlanet = itemView.findViewById(R.id.numberOfPlanet);
+            itemView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    listener.onClick(list.get(getAdapterPosition()));
+                }
+            });
         }
 
         public void onBind(StringModel s) {
